@@ -220,6 +220,9 @@ defmodule Hammer.Plug do
         conn
         |> put_delete_condition(full_id, delete_when)
         |> on_deny_handler.([])
+
+      {:error, _reason} ->
+        put_delete_condition(conn, full_id, delete_when)
     end
   end
 
